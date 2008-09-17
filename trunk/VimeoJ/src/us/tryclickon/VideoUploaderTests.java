@@ -4,7 +4,7 @@
 package us.tryclickon;
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 import junit.framework.TestSuite;
 
 import org.apache.log4j.Logger;
@@ -15,6 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import us.tryclickon.vimeoResponse.Token;
+import us.tryclickon.vimeoResponse.User;
 
 import com.google.gson.Gson;
 
@@ -68,7 +69,7 @@ public class VideoUploaderTests extends TestSuite{
 		String json = "{\"stat\":\"ok\",\"generated_in\":\"0.0704\",\"auth\":{\"token\":\"CHANGE_ME_TO_YOUR_TOKEN\",\"perms\":\"delete\",\"user\":{\"nsid\":\"123434\",\"id\":\"123\",\"username\":\"some_user_name\",\"fullname\":\"Some Full Name\"}}}";
 		Gson gson = new Gson();
 		Token token = gson.fromJson(json, Token.class);		
-		String tokenStr = token.auth.token;
+		String tokenStr = token.getAuth().getToken();
 		log.debug(tokenStr);
 	}
 
@@ -82,6 +83,13 @@ public class VideoUploaderTests extends TestSuite{
 		log.debug("videoId: " + videoId);
 		assertNotNull(videoId);
 		
+	}
+	
+	@Test
+	public void testGetUser() {
+		VimeoWrapper vimeo = new VimeoWrapper(VideoUploaderTests.apiKey, VideoUploaderTests.secretKey);
+		User user = vimeo.getUser("tooangel");
+		assertNotNull(user);
 	}
 
 }
