@@ -9,11 +9,12 @@ public class TestClient {
 		VimeoWrapper vimeoWrapper = new VimeoWrapper("", "");
 		User user = vimeoWrapper.getUser("coen");
 		System.out.println(user.toString());
-//		String link = vimeoWarpper.generateLoginLink();
-//		System.out.println(link);
-//		System.out.print("Visit the link, and press enter");
-//		Scanner scanner = new Scanner(System.in);
-//		scanner.nextLine();
+		String link = vimeoWrapper.generateLoginLink();
+		System.out.println(link);
+		System.out.print("Visit the link, and press enter");
+		Scanner scanner = new Scanner(System.in);
+		scanner.nextLine();
+		System.out.println(vimeoWrapper.getToken());
 //	
 	}
 }
