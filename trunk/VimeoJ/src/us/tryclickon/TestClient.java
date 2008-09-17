@@ -6,7 +6,7 @@ import us.tryclickon.vimeoResponse.User;
 
 public class TestClient {
 	public static void main(String[] args) {
-		VimeoWrapper vimeoWrapper = new VimeoWrapper("5115bb12d4e415cbd081839193671b23", "407768130");
+		VimeoWrapper vimeoWrapper = new VimeoWrapper("", "");
 		User user = vimeoWrapper.getUser("coen");
 		System.out.println(user.toString());
 //		String link = vimeoWarpper.generateLoginLink();
